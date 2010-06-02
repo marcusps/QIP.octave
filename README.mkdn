@@ -1,0 +1,33 @@
+QIP.octave
+==========
+
+This is intended to be a library of useful 
+functions in quantum information processing calculations.
+The Octave packages group related functions. They are:
+
++ qip
+  - tensor
+  - partial_trace
+  - asym_hermitian_matrix
++ qip_open_systems
+  - liou
+  - liou_row
+  - kraus
+  - dissipator
+  - vecinv
+  - rowinv
+  - elimination
+  - duplication
+  - duplication_conj
+  - complex2real_mat
+  - complex2real_vec
+  - real2complex_mat
+  - real2complex_vec
++ qip_random
+  - unitary
+  - orthogonal_matrix
+  - pure_state
+  - mixed_state
+  - real_mixed_state
+  - dynamical_matrix
+  - choi_matrix
