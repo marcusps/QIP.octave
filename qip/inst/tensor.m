@@ -1,4 +1,4 @@
-## Copyright (C) 2010   Toby Cubitt http://dr-qubit.org
+## Copyright (C) 2010   Toby Cubitt http://www.dr-qubit.org
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
