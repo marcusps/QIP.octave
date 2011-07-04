@@ -1,0 +1,12 @@
+Name: qip_random
+Version: 0.1  
+Date: 2011-07-02
+Author: Marcus da Silva <marcus.ps@gmail.com>
+Maintainer: Marcus da Silva <marcus.ps@gmail.com>
+Title: Quantum Information Processing Toolbox
+Description: This package includes functions that are commonly
+ used in quantum information processing (QIP) calculations. The
+ focus of his subpackage are random states and processes.
+Depends: qip (>= 0.1), qip_open_systems (>= 0.1)
+Categories: science math
+License: GPL version 2 or later
