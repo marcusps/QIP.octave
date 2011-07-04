@@ -1,22 +1,21 @@
-function m = vecinv(v,r,c)
-
-% VECINV   Transformas a vector into a matrix
+function p = pauli( idx )
+% PAULI
+% author: Marcus P. da Silva
 % requires: nothing
-% author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%   PAULI(I) returns the Pauli matrix corresponding to the
+%   index I. 0 maps to identity, 1 to \sigma_x, 2 to \sigma_y and 3
+%   to \sigma_z.
 %
-%    See also: vec, row, rowinv, reshape
 %
-%   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%   Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %   License: Distributed under GPL 2.0
 %            http://creativecommons.org/licenses/GPL/2.0/
 %            http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 %
 
-%  Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%  Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %  This program is free software; you can redistribute it and/or modify
 %  it under the terms of the GNU General Public License as published by
@@ -29,6 +28,17 @@ function m = vecinv(v,r,c)
 %  GNU General Public License for more details.
 % 
 %  You should have received a copy of the GNU General Public License
-%  along with this program; if not, see <http://www.gnu.org/licenses/>.
+%  along with this program; if not, see
+%  <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+if idx == 0
+  p = [1 0; 0 1];
+elseif idx == 1
+  p = [0 1; 1 0];
+elseif idx == 2
+  p = [0 -i; i 0];
+elseif idx == 3
+  p = [1 0; 0 -1];
+else
+  p = []
+end

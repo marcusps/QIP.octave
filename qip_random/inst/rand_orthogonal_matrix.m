@@ -1,13 +1,13 @@
-function m = vecinv(v,r,c)
+function u = rand_orthogonal_matrix(n)
 
-% VECINV   Transformas a vector into a matrix
+% QIP.RANDOM.ORTHOGONAL_MATRIX   Random orthogonal matrix
 % requires: nothing
 % author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%    U = RAND_ORTHO(D) returns a random orthogonal matrix of
+%    dimension D.
 %
-%    See also: vec, row, rowinv, reshape
+%    See also: rand_unitary, randn, orth
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -31,4 +31,4 @@ function m = vecinv(v,r,c)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+u = orth(randn(n));

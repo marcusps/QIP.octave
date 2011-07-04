@@ -1,13 +1,19 @@
-function m = vecinv(v,r,c)
+function phi = rand_choi_matrix( d )
 
-% VECINV   Transformas a vector into a matrix
-% requires: nothing
+% QIP.RANDOM.CHOI_MATRIX  Random Choi-Jamiolkowski matrix
 % author: Marcus da Silva
+% requires: qip.random.density_matrix
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%   M = qip.random.choi_matrix(D) returns a Choi-Jamiolkowski
+%   matrix M for a random completely positive superoperator acting
+%   on a D dimensional Hilbert space.
 %
-%    See also: vec, row, rowinv, reshape
+%   This is done by generating a random density matrix acting on a
+%   D^2 space, such that the eigenvalues are uniformly distributed
+%   on the [0,1/D^2] interval, and the diagonalizing unitary is
+%   choosen from the Haar distribution.
+% 
+%   See also: qip.random.density_matrix, qip.random.unitary
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -31,4 +37,4 @@ function m = vecinv(v,r,c)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+phi = rand_mixed_state(d*d);

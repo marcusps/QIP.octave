@@ -1,13 +1,13 @@
-function m = vecinv(v,r,c)
-
-% VECINV   Transformas a vector into a matrix
-% requires: nothing
+function sample = dirichlet( alpha )
+% QIP.RANDOM.MIXED_STATE  Sample a vector from Dir(alpha(1), ..., alpha(k))
 % author: Marcus da Silva
+% requires: nothing
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
-%
-%    See also: vec, row, rowinv, reshape
+%   M = qip.random.dirichlet(D) returns a vector sampled from the
+%   probability simplex according to the Diriclet distribution with
+%   parameters alpha.
+% 
+%   See also: qip.random.mixed_state
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -31,4 +31,10 @@ function m = vecinv(v,r,c)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+k = length(alpha);
+sample = zeros(1, k);
+for i=1:k
+  sample(i) = gamrnd(alpha(i), 1, 1, 1);
+end
+S = sum(sample);
+sample = sample ./ S;

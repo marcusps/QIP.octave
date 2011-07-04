@@ -1,22 +1,19 @@
-function m = vecinv(v,r,c)
-
-% VECINV   Transformas a vector into a matrix
-% requires: nothing
-% author: Marcus da Silva
+function p = projector( v )
+% PROJECTOR
+% author: Marcus P. da Silva
+% requires: none
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%   PROJECTOR(v) returns the projector corresponding to the
+%   vector v.
 %
-%    See also: vec, row, rowinv, reshape
-%
-%   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%   Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %   License: Distributed under GPL 2.0
 %            http://creativecommons.org/licenses/GPL/2.0/
 %            http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 %
 
-%  Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%  Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %  This program is free software; you can redistribute it and/or modify
 %  it under the terms of the GNU General Public License as published by
@@ -31,4 +28,4 @@ function m = vecinv(v,r,c)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+p = v*v';

@@ -1,13 +1,13 @@
-function m = vecinv(v,r,c)
-
-% VECINV   Transformas a vector into a matrix
-% requires: nothing
+function phis = rand_cptp_map(varargin)
+% QIP.RANDOM.CPTP_MAP  Random completely positive trace preserving map
+% requires: qip.ket, qip.bra, qip.random.unitary, kron
 % author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
-%
-%    See also: vec, row, rowinv, reshape
+%    L = qip.random.superoperator(d,e) returns the column-major
+%    liouville representation of a random superoperator acting on a d
+%    dimensional Hilbert space, with an E dimensional environment. 
+%    The superoperator is chosen by generating Haar distributed
+%    unitary acting on the joint system, and performing a partial trace.
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -30,5 +30,19 @@ function m = vecinv(v,r,c)
 % 
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
-
-  m = reshape(v,r,c);
+d = varargin{1};
+if length(varargin)>1,
+  e = varargin{2};
+  if e>d^2,
+    e = d^2;
+  end
+else
+  e = d^2;
+end
+u=rand_unitary(d*e);
+ey=eye(d);
+r=u*kron(ey,ket(0,e));
+phis=zeros(d*d);
+for k=0:(e-1),
+  phis=phis+kraus2liou( kron(ey,bra(k,e))*r );
+end

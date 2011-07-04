@@ -1,19 +1,20 @@
-function m = vecinv(v,r,c)
+function u = rand_unitary(n)
 
-% VECINV   Transformas a vector into a matrix
+% QIP.RANDOM.UNITARY   Random unitary
 % requires: nothing
 % author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%    U = QIP.RANDOM.UNITARY(N) returns a random unitary matrix of
+%    dimension N drawn according to the Haar measure.
 %
-%    See also: vec, row, rowinv, reshape
+%    See also: randn, orth
 %
-%   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
-% 
-%   License: Distributed under GPL 2.0
-%            http://creativecommons.org/licenses/GPL/2.0/
-%            http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+%
+%    Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%
+%    License: Distributed under GPL 2.0
+%             http://creativecommons.org/licenses/GPL/2.0/
+%             http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 %
 
 %  Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
@@ -31,4 +32,4 @@ function m = vecinv(v,r,c)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+u = orth(randn(n)+sqrt(-1)*randn(n));

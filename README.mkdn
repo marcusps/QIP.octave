@@ -6,28 +6,44 @@ functions in quantum information processing calculations.
 The Octave packages group related functions. They are:
 
 + qip
-  - tensor
-  - partial_trace
   - asym_hermitian_matrix
+  - bra
+  - concurrence
+  - ctrlu
+  - idx2pauli
+  - ket
+  - ketbra
+  - normalize
+  - partial_trace
+  - partial_transpose
+  - pauli
+  - projector
+  - tensor
+  - wfidel
 + qip_open_systems
-  - liou
-  - liou_row
-  - kraus
-  - dissipator
-  - vecinv
-  - rowinv
-  - elimination
-  - duplication
-  - duplication_conj
+  - choi2liou
   - complex2real_mat
   - complex2real_vec
+  - dissipator
+  - duplication
+  - duplication_conj
+  - elimination
+  - hamiltonian
+  - kraus2liou
+  - liou
+  - liou_row
   - real2complex_mat
   - real2complex_vec
+  - row
+  - rowinv
+  - vec
+  - vecinv
 + qip_random
-  - unitary
-  - orthogonal_matrix
-  - pure_state
-  - mixed_state
-  - real_mixed_state
-  - dynamical_matrix
-  - choi_matrix
+  - dirichlet
+  - rand_choi_matrix
+  - rand_cptp_map
+  - rand_mixed_state
+  - rand_orthogonal_matrix
+  - rand_pure_state
+  - rand_real_mixed_state
+  - rand_unitary

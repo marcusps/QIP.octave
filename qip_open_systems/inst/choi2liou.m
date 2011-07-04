@@ -1,13 +1,16 @@
-function m = vecinv(v,r,c)
-
-% VECINV   Transformas a vector into a matrix
+function M = liou2choi( c )
+% QIP.OPEN_SYSTEMS.LIOU2CHOI 
 % requires: nothing
 % author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%    L = qip.open_systems.liou2choi(A) returns the Choi
+%    representation of a column major Liouvillian representation of
+%    a superoperator. The Jamilkowski state can be obtained by
+%    normalizing the Choi matrix (i.e. dividing by the dimension).
 %
-%    See also: vec, row, rowinv, reshape
+%    This operation is an involution -- it is self inverse.
+%
+%    See also: liou, vec, row
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -30,5 +33,21 @@ function m = vecinv(v,r,c)
 % 
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
+s = size(c);
+M = c;
 
-  m = reshape(v,r,c);
+index = @(a,b) (a-1)*sqrt(s(1))+b;
+
+for n=1:sqrt(s(1)),
+  for m=1:sqrt(s(1)),
+    for o=1:sqrt(s(1)),
+      for p=n+1:sqrt(s(1)),
+        % this swaps M_{nm,op} with M_{pm,on}
+        temp = M( index(n,m), index(o,p) );
+        M( index(n,m), index(o,p) ) = ...
+            M( index(p,m), index(o,n) );
+        M( index(p,m), index(o,n) ) = temp;
+      end
+    end
+  end
+end
