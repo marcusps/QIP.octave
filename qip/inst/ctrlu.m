@@ -1,23 +1,22 @@
-function r = asym_hermitian_matrix( m )
-
-% QIP.ASYM_HERMITIAN_MATRIX  Tensor product
-% author: Marcus da Silva
+function c = ctrlu( u, n )
+% CTRLU
+% author: Marcus P. da Silva
 % requires: nothing
 %
-%   A = qip.asym_hermitian_matrix( M ) returns a real-valued
-%   representation of a hermitian matrix where the diagonals remain
-%   unchanged, the uppter triangular part of A is the real part of
-%   the upper triangular part of M, and the lower triangular part
-%   of A is the imaginary part of the upper triangular part of M.
+%   CTRLU(u) returns a unitary corresponding to the controlled-u operation.
 %
-%   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%   CTRLU(u,n) returns a unitary corresponding to the n-bit
+%   controlled-u operation (that is, u acting conditioned on the
+%   state of n qubits)
+%
+%   Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %   License: Distributed under GPL 2.0
 %            http://creativecommons.org/licenses/GPL/2.0/
 %            http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 %
 
-%  Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%  Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %  This program is free software; you can redistribute it and/or modify
 %  it under the terms of the GNU General Public License as published by
@@ -30,9 +29,9 @@ function r = asym_hermitian_matrix( m )
 %  GNU General Public License for more details.
 % 
 %  You should have received a copy of the GNU General Public License
-%  along with this program; if not, see <http://www.gnu.org/licenses/>.
-
-
-r = real(diag(diag(m))) ...
-    + real( triu(m,1) ) ...
-    - imag( tril(m,1) );
+%  along with this program; if not, see
+%  <http://www.gnu.org/licenses/>.
+if nargin < 2 || isempty(n)
+  n = 1;
+end
+c = sparse(blkdiag(eye(2^n),u));

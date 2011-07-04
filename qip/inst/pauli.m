@@ -1,23 +1,21 @@
-function r = asym_hermitian_matrix( m )
-
-% QIP.ASYM_HERMITIAN_MATRIX  Tensor product
-% author: Marcus da Silva
+function p = pauli( idx )
+% PAULI
+% author: Marcus P. da Silva
 % requires: nothing
 %
-%   A = qip.asym_hermitian_matrix( M ) returns a real-valued
-%   representation of a hermitian matrix where the diagonals remain
-%   unchanged, the uppter triangular part of A is the real part of
-%   the upper triangular part of M, and the lower triangular part
-%   of A is the imaginary part of the upper triangular part of M.
+%   PAULI(I) returns the Pauli matrix corresponding to the
+%   index I. 0 maps to identity, 1 to \sigma_x, 2 to \sigma_y and 3
+%   to \sigma_z.
 %
-%   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%
+%   Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %   License: Distributed under GPL 2.0
 %            http://creativecommons.org/licenses/GPL/2.0/
 %            http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 %
 
-%  Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
+%  Copyright (C) 2010  Marcus P. da Silva  http://github.com/marcusps
 % 
 %  This program is free software; you can redistribute it and/or modify
 %  it under the terms of the GNU General Public License as published by
@@ -30,9 +28,17 @@ function r = asym_hermitian_matrix( m )
 %  GNU General Public License for more details.
 % 
 %  You should have received a copy of the GNU General Public License
-%  along with this program; if not, see <http://www.gnu.org/licenses/>.
+%  along with this program; if not, see
+%  <http://www.gnu.org/licenses/>.
 
-
-r = real(diag(diag(m))) ...
-    + real( triu(m,1) ) ...
-    - imag( tril(m,1) );
+if idx == 0
+  p = [1 0; 0 1];
+elseif idx == 1
+  p = [0 1; 1 0];
+elseif idx == 2
+  p = [0 -i; i 0];
+elseif idx == 3
+  p = [1 0; 0 -1];
+else
+  p = []
+end
