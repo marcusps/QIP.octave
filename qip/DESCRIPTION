@@ -6,4 +6,5 @@ Maintainer: Marcus da Silva <marcus.ps@gmail.com>
 Title: Quantum Information Processing Toolbox
 Description: This package includes functions that are commonly
  used in quantum information processing (QIP) calculations.
+Categories: science math
 License: GPL version 2 or later
