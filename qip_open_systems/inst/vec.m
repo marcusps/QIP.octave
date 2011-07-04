@@ -1,13 +1,13 @@
-function m = vecinv(v,r,c)
+function V = vec( M )
 
-% VECINV   Transformas a vector into a matrix
+% QIP.OPEN_SYSTEMS.VEC  Column-major vectorization
 % requires: nothing
 % author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%    L = qip.open_systems.vec(A) returns a column-major vectorization
+%    (i.e. stacking of columns) of a matrix A.
 %
-%    See also: vec, row, rowinv, reshape
+%    See also: liou_row, vec, row
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -31,4 +31,4 @@ function m = vecinv(v,r,c)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+  V = reshape(M,prod(size(M)),1);

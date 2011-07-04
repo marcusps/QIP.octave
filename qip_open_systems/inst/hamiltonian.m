@@ -1,13 +1,13 @@
-function m = vecinv(v,r,c)
+function L = hamiltonian( h )
 
-% VECINV   Transformas a vector into a matrix
-% requires: nothing
+% QIP.OPEN_SYSTEMS.HAMILTONIAN  Liouvillian representation of hamiltonian superoperator
+% requires: qip.open_systems.liou
 % author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%    L = qip.open_systems.hamiltonian(A) returns a column-major
+%    liouville representation of a hamiltonian operator A.
 %
-%    See also: vec, row, rowinv, reshape
+%    See also: liou_row, vec, row
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -31,4 +31,4 @@ function m = vecinv(v,r,c)
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-  m = reshape(v,r,c);
+L = -1j * liou(h,eye(size(h))) + 1j * liou(eye(size(h)),h);

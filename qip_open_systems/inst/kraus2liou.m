@@ -1,13 +1,14 @@
-function m = vecinv(v,r,c)
-
-% VECINV   Transformas a vector into a matrix
-% requires: nothing
+function l = kraus2liou( a ) 
+% QIP.OPEN_SYSTEMS.KRAUS2LIOU  Liouvillian representation of Kraus operators
+% requires: qip.open_systems.liou
 % author: Marcus da Silva
 %
-%    M = VECINV(V,R,C) Reshaped a vector V into a matrix with R
-%    rows and C columns.
+%    L = qip.open_systems.kraus2liou(A) returns a column-major
+%    liouville representation of a set of Kraus operators (if A is
+%    a cell containing various operators) or a single Kraus
+%    operator (if A is a single operator).
 %
-%    See also: vec, row, rowinv, reshape
+%    See also: liou_row, vec, row
 %
 %   Copyright (C) 2010   Marcus P da Silva http://github.com/marcusps
 % 
@@ -30,5 +31,11 @@ function m = vecinv(v,r,c)
 % 
 %  You should have received a copy of the GNU General Public License
 %  along with this program; if not, see <http://www.gnu.org/licenses/>.
-
-  m = reshape(v,r,c);
+if iscell(a),
+  l = liou(zeros(size(a{1})),zeros(size(a{1})));
+  for k = 1:length(a),
+    l = l + liou(a{k},a{k}');
+  end
+else
+  l = liou(a,a');
+end
